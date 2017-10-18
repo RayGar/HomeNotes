@@ -1,0 +1,39 @@
+{
+  "intents": [
+    {
+      "intent": "LeaveNoteFor",
+      "slots": [
+        {
+          "name": "User",
+          "type": "AMAZON.LITERAL"
+        }
+      ]
+    },
+    {
+      "intent": "SendNote",
+      "slots": [
+	{
+	  "name": "Message",
+	  "type": "AMAZON.LITERAL"
+	}
+      ]
+    },
+    {
+      "intent": "GetNoteFor",
+      "slots": [
+        {
+          "name": "User",
+          "type": "AMAZON.LITERAL"
+        }
+      ]
+    },
+    {
+      "intent": "RepeatNote",
+      "slots": []
+    },
+    {
+      "intent": "DeleteNote",
+      "slots": []
+    }
+  ]
+}
