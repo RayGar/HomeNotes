@@ -1,0 +1,9 @@
+/* This is where our apps output "speech" will go in. As you can see it is an array of strings */
+
+data = ["",
+		"",
+		""];
+
+var RequestMsgA = "What note would you like me to write.";
+var RetrieveMsg = "Some notes were found under your name. Playing them now.";
+var EmptyMsg = "No notes were found for you.";
