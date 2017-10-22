@@ -1,1 +1,23 @@
-/* This file is where we'll write our starting script. We mmay copy it from AWS Lambda here for safe-keeping.
+/* This is a work is a work in progress. What it is, is our AWS Lambda script, written in javascript and using the alexa skillskit API - Ray*/
+
+
+"use strict";
+
+var Alexa = require("alexa-sdk");
+
+var handlers = {
+  "HelloIntent": function () {
+    this.response.speak("Hello, Ray"); 
+    this.emit(':responseReady');
+  },
+  "LaunchRequest": function () {
+    this.response.speak("Ray, welcome to Home Notes"); 
+    this.emit(':responseReady');
+  }
+};
+
+exports.handler = function(event, context, callback){
+  var alexa = Alexa.handler(event, context);
+    alexa.registerHandlers(handlers);
+    alexa.execute();
+};
