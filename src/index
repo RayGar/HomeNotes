@@ -3,21 +3,21 @@
 
 "use strict";
 
-var Alexa = require("alexa-sdk");
+var Alexa = require("alexa-sdk");																	//this calls the API, Alexa Skills Kit
 
-var handlers = {
-  "HelloIntent": function () {
-    this.response.speak("Hello, Ray"); 
-    this.emit(':responseReady');
+var handlers = {																					//this is an object that handles the intent requests
+  "HelloIntent": function () {																		//inside the handlers object, we have function definitions
+    this.response.speak("Hello, Ray"); 																//API object method that can use the Echo's speakers to say the argument
+    this.emit(':responseReady');																	//this one too
   },
-  "LaunchRequest": function () {
+  "LaunchRequest": function () {																	//this response does the same but it responds to a different format of utterance
     this.response.speak("Ray, welcome to Home Notes"); 
     this.emit(':responseReady');
   }
 };
 
-exports.handler = function(event, context, callback){
-  var alexa = Alexa.handler(event, context);
-    alexa.registerHandlers(handlers);
-    alexa.execute();
+exports.handler = function(event, context, callback){												//every lambda function needs this, not just Alexa, AWS calls it everytime someone uses our skill
+  var alexa = Alexa.handler(event, context);														//setup the Alexa object
+    alexa.registerHandlers(handlers);																//register the handlers we wrote in the preceding block
+    alexa.execute();																				//calls the Alexa code
 };
