@@ -5,14 +5,7 @@
       "slots": [
         {
           "name": "User",
-          "type": "AMAZON.LITERAL"
-        }
-      ]
-    },
-    {
-      "intent": "SendNote",
-      "slots": [
-	{
+          "type": "AMAZON.LITERAL",
 	  "name": "Message",
 	  "type": "AMAZON.LITERAL"
 	}
