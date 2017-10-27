@@ -1,20 +1,22 @@
-<<<<<<< Updated upstream
 LeaveNoteFor Leave a Message for {User} {message}
 LeaveNoteFor Leave a note for {User} {message}
 LeaveNoteFor Leave a memo for {User} {message}
-=======
 ActionIntent I wish to {Action}
 ActionIntent I want to {Action}
 ActionIntent Do {Action}
 ActionIntent Do this {Action}
 ActionIntent Can you {Action}
 ActionIntent I need you to {Action}
-LeaveNoteFor Leave a message for {User}
-LeaveNoteFor Leave a note for {User}
-LeaveNoteFor Leave a memo for {User}
-LeaveNoteFor Record a message for {User}
-LeaveNoteFor Record a note for {User}
-LeaveNoteFor Record a memo for {User}
-RequestNotes Are there any notes for {User}
-TakeNoteIntent My message is {Message}
->>>>>>> Stashed changes
+LeaveNoteForIntent Leave a message for {User}
+LeaveNoteForIntent Leave a note for {User}
+LeaveNoteForIntent Leave a memo for {User}
+LeaveNoteForIntent Record a message for {User}
+LeaveNoteForIntent Record a note for {User}
+LeaveNoteForIntent Record a memo for {User}
+RequestNotesIntent Are there any notes for {User}
+RequestNotesIntent Are there any messages for {User}
+RequestNotesIntent Are there any messages for {User}
+RequestNotesIntent Look up notes for {User}
+RequestNotesIntent Look up messages for {User}
+RequestNotesIntent Look up memos for {User}
+ 
