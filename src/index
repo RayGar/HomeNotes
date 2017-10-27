@@ -6,12 +6,21 @@
 var Alexa = require("alexa-sdk");																	//this calls the API, Alexa Skills Kit
 
 var handlers = {																					//this is an object that handles the intent requests
-  "HelloIntent": function () {																		//inside the handlers object, we have function definitions
-    this.response.speak("Hello, Ray"); 																//API object method that can use the Echo's speakers to say the argument
-    this.emit(':responseReady');																	//this one too
+  "LaunchRequest": function () {																	//inside the handlers object, we have function definitions
+    
+	this.attributes['currentAction'] = "";
+	this.attributes['noteListLength'] = 0;															//session attributes are persistent variable that describe the state of an execution they must be initiated in this intent
+	
+	this.response.speak("Welcome to home notes. What action do you wish to take.") 				//API object method that can use the Echo's speakers to say the argument
+		.listen("Sorry I did not hear that. Please repeat the action you wish to take");														//repeat if needed
+	
+	this.emit(':responseReady');																	//this one too
   },
-  "LaunchRequest": function () {																	//this response does the same but it responds to a different format of utterance
-    this.response.speak("Ray, welcome to Home Notes"); 
+  "ActionIntent": function () {																	//this response does the same but it responds to a different format of utterance 
+	var userAction = this.event.request.intent.slots.action.value;
+	this.attributes['currentAction'] = userAction;
+	this.response.speak("I will now initiate the action " + userAction	+ " with you.");
+	  
     this.emit(':responseReady');
   }
 };

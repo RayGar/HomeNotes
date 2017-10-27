@@ -1,0 +1,129 @@
+{
+  "intents": [
+    {
+      "name": "ActionIntent",
+      "samples": [
+        "I wish to {action}",
+        "I want to {action}",
+        "Do {action}",
+        "Do this {action}",
+        "Can you {action}",
+        "Could you {action}",
+        "I need you to {action}"
+      ],
+      "slots": [
+        {
+          "name": "action",
+          "type": "ActionType",
+          "samples": []
+        }
+      ]
+    },
+    {
+      "name": "AMAZON.CancelIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.HelpIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.StopIntent",
+      "samples": []
+    }
+  ],
+  "types": [
+    {
+      "name": "ActionType",
+      "values": [
+        {
+          "id": null,
+          "name": {
+            "value": "take note",
+            "synonyms": [
+              "record memo",
+              "record note",
+              "leave memo",
+              "leave message",
+              "leave note"
+            ]
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "delete note",
+            "synonyms": [
+              "erase message",
+              "erase note",
+              "erase memo",
+              "delete memo",
+              "delete note"
+            ]
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "search",
+            "synonyms": [
+              "request",
+              "look up"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "prompts": [
+    {
+      "id": "Confirm.Intent-ActionIntent",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "Is it {action}"
+        },
+        {
+          "type": "PlainText",
+          "value": "Did you say the action is {action}"
+        }
+      ]
+    },
+    {
+      "id": "Elicit.Intent-ActionIntent.IntentSlot-action",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "What is the action {action}"
+        }
+      ]
+    }
+  ],
+  "dialog": {
+    "version": "1.0",
+    "intents": [
+      {
+        "name": "ActionIntent",
+        "confirmationRequired": true,
+        "prompts": {
+          "confirm": "Confirm.Intent-ActionIntent"
+        },
+        "slots": [
+          {
+            "name": "action",
+            "type": "ActionType",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicit": "Elicit.Intent-ActionIntent.IntentSlot-action"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
