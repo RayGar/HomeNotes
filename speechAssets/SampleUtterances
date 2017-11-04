@@ -19,4 +19,14 @@ RequestNotesIntent Are there any messages for {User}
 RequestNotesIntent Look up notes for {User}
 RequestNotesIntent Look up messages for {User}
 RequestNotesIntent Look up memos for {User}
- 
+RequestNotesIntent What are my notes
+RequesNonspecificNotes Read all my notes
+SpecifyUserIntent I'm {User}
+SpecifyUserIntent I'm pickle {User} Wub-a-luba-dub-dub
+RequestSpecificNoteIntent Look up {noteNumberIndex}
+RequestSpecificNoteIntent Look up {noteNumberIndex} thorugh {noteNumberIndex}
+RequestSpecificNoteIntent Look up the {noteNumberIndex} note
+RequestSpecificNoteIntent Read {noteNumberIndex}
+DeleteNoteIntent Delete {noteNumberIndex}
+DeleteMultipleNotesIntent Delete this notes: {noteNumberIndex} through {noteNumberIndex}
+
