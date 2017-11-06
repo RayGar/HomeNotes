@@ -1,18 +1,111 @@
-LeaveNoteFor Leave a Message for {User} {message}
-LeaveNoteFor Leave a note for {User} {message}
-LeaveNoteFor Leave a memo for {User} {message}
 ActionIntent I wish to {Action}
 ActionIntent I want to {Action}
 ActionIntent Do {Action}
 ActionIntent Do this {Action}
 ActionIntent Can you {Action}
 ActionIntent I need you to {Action}
-LeaveNoteForIntent Leave a message for {User}
-LeaveNoteForIntent Leave a note for {User}
-LeaveNoteForIntent Leave a memo for {User}
-LeaveNoteForIntent Record a message for {User}
-LeaveNoteForIntent Record a note for {User}
-LeaveNoteForIntent Record a memo for {User}
+
+
+CreateNoteForIntent Leave a message for {User}
+CreateNoteForIntent Leave a note for {User}
+CreateNoteForIntent Leave a memo for {User}
+CreateNoteForIntent Record a message for {User}
+CreateNoteForIntent Record a note for {User}
+CreateNoteForIntent Record a memo for {User}
+
+
+/* Note: these NoteTakingIntent are too long for me to have typed out so I had to borrow them from this other person's project: https://github.com/joanaz/AS-NoteTaker
+NoteTakingIntent take my note {either of the keys can be used to encrypt a message the opposite key from the one used to encrypt the message is used for decryption|note}
+NoteTakingIntent take my note {the opposite key from the one used to encrypt the message is used for decryption either of the keys can be used to encrypt a message|note}
+NoteTakingIntent take my note {asymmetric cryptography also known as public key cryptography uses public and private keys to encrypt and decrypt data|note}
+NoteTakingIntent take my note {public key cryptography also known as asymmetric cryptography uses public and private keys to encrypt and decrypt data|note}
+NoteTakingIntent take my note {the keys are simply large numbers that have been paired together but are not identical|note}
+NoteTakingIntent take my note {the keys are not identical but are simply large numbers that have been paired together|note}
+NoteTakingIntent take my note {one key in the pair can be shared with everyone it is called the public key|note}
+NoteTakingIntent take my note {asymmetric cryptography uses public and private keys to encrypt and decrypt data|note}
+NoteTakingIntent take my note {the other key in the pair is kept secret it is called the private key|note} 
+NoteTakingIntent take my note {the private key it is called the other key in the pair is kept secret|note}
+NoteTakingIntent take my note {the private key it is called in the pair is kept secret|note}  
+NoteTakingIntent take my note {the other key in the pair is kept secret|note}
+NoteTakingIntent take my note {dinner with Linda at six tomorrow at Hao|note}
+NoteTakingIntent take my note {lunch with John at twelve at Maru|note}
+NoteTakingIntent take my note {the godfather is the best movie ever|note}
+NoteTakingIntent take my note {mirror mirror on the wall|note}
+NoteTakingIntent take my note {flexible sensors for wearables|note}
+NoteTakingIntent take my note {interactive orange juice|note}
+NoteTakingIntent take my note {mirror mirror wall|note}
+NoteTakingIntent take my note {mirror mirror|note}
+NoteTakingIntent take my note {interactive juice|note}
+NoteTakingIntent take my note {pcb printer|note}
+NoteTakingIntent take my note {interactive|note}
+NoteTakingIntent take my note {mirror|note}
+NoteTakingIntent take my note {whatever|note}
+
+NoteTakingIntent take a note {either of the keys can be used to encrypt a message the opposite key from the one used to encrypt the message is used for decryption|note}
+NoteTakingIntent take a note {the opposite key from the one used to encrypt the message is used for decryption either of the keys can be used to encrypt a message|note}
+NoteTakingIntent take a note {asymmetric cryptography also known as public key cryptography uses public and private keys to encrypt and decrypt data|note}
+NoteTakingIntent take a note {public key cryptography also known as asymmetric cryptography uses public and private keys to encrypt and decrypt data|note}
+NoteTakingIntent take a note {the keys are simply large numbers that have been paired together but are not identical|note}
+NoteTakingIntent take a note {the keys are not identical but are simply large numbers that have been paired together|note}
+NoteTakingIntent take a note {one key in the pair can be shared with everyone it is called the public key|note}
+NoteTakingIntent take a note {asymmetric cryptography uses public and private keys to encrypt and decrypt data|note}
+NoteTakingIntent take a note {the other key in the pair is kept secret it is called the private key|note} 
+NoteTakingIntent take a note {the private key it is called the other key in the pair is kept secret|note}
+NoteTakingIntent take a note {the private key it is called in the pair is kept secret|note}  
+NoteTakingIntent take a note {the other key in the pair is kept secret|note}
+NoteTakingIntent take a note {dinner with Linda at Hao tomorrow at six|note}
+NoteTakingIntent take a note {lunch with John at Maru tomorrow at twelve|note}
+NoteTakingIntent take a note {the godfather is the best movie ever|note}
+NoteTakingIntent take a note {mirror mirror on the wall|note}
+NoteTakingIntent take a note {flexible sensors for wearables|note}
+NoteTakingIntent take a note {interactive orange juice|note}
+NoteTakingIntent take a note {mirror mirror wall|note}
+NoteTakingIntent take a note {mirror mirror|note}
+NoteTakingIntent take a note {interactive juice|note}
+NoteTakingIntent take a note {pcb printer|note}
+NoteTakingIntent take a note {interactive|note}
+NoteTakingIntent take a note {mirror|note}
+NoteTakingIntent take a note {whatever|note}
+
+NoteTakingIntent take note {either of the keys can be used to encrypt a message the opposite key from the one used to encrypt the message is used for decryption|note}
+NoteTakingIntent take note {the opposite key from the one used to encrypt the message is used for decryption either of the keys can be used to encrypt a message|note}
+NoteTakingIntent take note {asymmetric cryptography also known as public key cryptography uses public and private keys to encrypt and decrypt data|note}
+NoteTakingIntent take note {public key cryptography also known as asymmetric cryptography uses public and private keys to encrypt and decrypt data|note}
+NoteTakingIntent take note {the keys are simply large numbers that have been paired together but are not identical|note}
+NoteTakingIntent take note {the keys are not identical but are simply large numbers that have been paired together|note}
+NoteTakingIntent take note {one key in the pair can be shared with everyone it is called the public key|note}
+NoteTakingIntent take note {asymmetric cryptography uses public and private keys to encrypt and decrypt data|note}
+NoteTakingIntent take note {the other key in the pair is kept secret it is called the private key|note} 
+NoteTakingIntent take note {the private key it is called the other key in the pair is kept secret|note}
+NoteTakingIntent take note {the private key it is called in the pair is kept secret|note}  
+NoteTakingIntent take note {the other key in the pair is kept secret|note}
+NoteTakingIntent take note {dinner with Linda at Hao tomorrow at six|note}
+NoteTakingIntent take note {lunch with John at Maru tomorrow at twelve|note}
+NoteTakingIntent take note {the godfather is the best movie ever|note}
+NoteTakingIntent take note {mirror mirror on the wall|note}
+NoteTakingIntent take note {flexible sensors for wearables|note}
+NoteTakingIntent take note {interactive orange juice|note}
+NoteTakingIntent take note {mirror mirror wall|note}
+NoteTakingIntent take note {mirror mirror|note}
+NoteTakingIntent take note {flying saucer|note}
+NoteTakingIntent take note {pcb printer|note}
+NoteTakingIntent take note {mirror|note}
+NoteTakingIntent take note {whatever|note}
+NoteTakingIntent take note {saucer|note}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 RequestNotesIntent Are there any notes for {User}
 RequestNotesIntent Are there any messages for {User}
 RequestNotesIntent Are there any messages for {User}
@@ -20,13 +113,30 @@ RequestNotesIntent Look up notes for {User}
 RequestNotesIntent Look up messages for {User}
 RequestNotesIntent Look up memos for {User}
 RequestNotesIntent What are my notes
+
 RequesNonspecificNotes Read all my notes
-SpecifyUserIntent I'm {User}
-SpecifyUserIntent I'm pickle {User} Wub-a-luba-dub-dub
+
+RegisterUserIntent I am {User}
+RegisterUserIntent call me {User}
+RegisterUserIntent name me {User}
+RegisterUserIntent address me as {User}
+RegisterUserIntent make my nickname {User}
+RegisterUserIntent my nickname is {User}
+RegisterUserIntent to nickname me {User}
+RegisterUserIntent assign my nickname {User}
+RegisterUserIntent set my nickname to {User}
+RegisterUserIntent for my nickname to be {User}
+RegisterUserIntent set {User} as my nickname
+
+
 RequestSpecificNoteIntent Look up {noteNumberIndex}
 RequestSpecificNoteIntent Look up {noteNumberIndex} thorugh {noteNumberIndex}
 RequestSpecificNoteIntent Look up the {noteNumberIndex} note
 RequestSpecificNoteIntent Read {noteNumberIndex}
+
+
 DeleteNoteIntent Delete {noteNumberIndex}
+
+
 DeleteMultipleNotesIntent Delete this notes: {noteNumberIndex} through {noteNumberIndex}
 
