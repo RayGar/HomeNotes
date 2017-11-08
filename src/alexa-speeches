@@ -1,0 +1,9 @@
+//TODO: learn Speech Synthesis Markup language to make Alexa's speech sound more like a human and add it here
+    var initiationMssg =  "Welcome for the first time to home notes..." +
+	"Use this skill to share messages between the members of your household..." +
+	"Every time you launch home notes you will be asked to indicate what is called your action..." +
+	"For the action you may choose to create a note, delete a note, or look up notes that other users may have left for you..." +
+	"Once you have chosen to record a note, I will ask you who the note is for, then you will specify the name of the user, who will recieve the note..." +
+	"and finally you will then utter the note to be recorded..." + 
+	"We recommend you create notes that are short, concise, creative, polite, useful and in plain language..." +
+	"Now, what action do you wish to take?";

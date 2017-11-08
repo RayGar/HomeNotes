@@ -7,14 +7,7 @@ var Alexa = require("alexa-sdk");																	// this calls the API, Alexa S
 
 var handlers = {																					// this is an object that handles the intent requests
   "LaunchRequest": function () {																	// inside the handlers object, we have function definitions
-    var initiationMssg =  "Welcome for the first time to home notes..." +
-	"Use this skill to share messages between the members of your household..." +
-	"Every time you launch home notes you will be asked to indicate what is called your action..." +
-	"For the action you may choose to create a note, delete a note, or look up notes that other users may have left for you..." +
-	"Once you have chosen to record a note, I will ask you who the note is for, then you will specify the name of the user, who will recieve the note..." +
-	"and finally you will then utter the note to be recorded..." + 
-	"We recommend you create notes that are short, concise, creative, polite, useful and in plain language..." +
-	"Now, what action do you wish to take?";
+    var initiationMssg =  "Welcome for the first time to home notes...";
         
 																// of an execution they must be initiated in this intent
 	
