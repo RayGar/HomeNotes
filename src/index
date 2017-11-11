@@ -1,37 +1,52 @@
-/* This is a work is a work in progress. What it is, is our AWS Lambda script, written in javascript and using the alexa skillskit API - Ray*/
+/* index.js: HomeNote's lambda function */
 
 
 "use strict";
 
 var Alexa = require("alexa-sdk");																	// this calls the API, Alexa Skills Kit
 
+var reask = "Now what action do you wish to take next?";
+
 var handlers = {																					// this is an object that handles the intent requests
-  "LaunchRequest": function () {																	// inside the handlers object, we have function definitions
-    var initiationMssg =  "Welcome for the first time to home notes...";
-        
-																// of an execution they must be initiated in this intent
-	
-	if(Object.keys(this.attributes).length === 0) {
-	    this.attributes['currentAciton'] = "";
-		this.attributes['noteListLength'] = 0;
+    "LaunchRequest": function () {
+      
+        if(Object.keys(this.attributes).length === 0) {
+            this.attributes['users'] = [];
+            this.response.speak("Welcome for the first time to home notes... What action do you wish to take?")
+                .listen("Sorry I did not hear that. Please repeat the action you wish to take.");
+        } else {
+            this.response.speak("Welcome back to home notes ... What action do you wish to take?")
+                .listen("Sorry I did not hear that. Please repeat the action you wish to take.");
+        }
 	    
-	    this.response.speak(initiationMssg)
-	        .listen("Sorry I did not hear that. Please repeat the action you wish to take");
-	}
-	else {
-	this.response.speak("Welcome back to home notes. What action do you wish to take.") 					// API object method that can use the Echo's speakers to say the argument
-		.listen("Sorry I did not hear that. Please repeat the action you wish to take");			// repeat if needed
-	}
+	    
 	this.emit(':responseReady');
   },
-  "ActionIntent": function () {																	 	// this intent executes after LaunchRequest, it handles the actions
-	var userAction = this.event.request.intent.slots.action.value;									// save the user action from the JSON slot
-	this.attributes['currentAction'] = userAction;													// save it in its session variable too
-	this.response.speak("I will now initiate the action " + userAction	+ " with you.");			// output the action so that the user knows he got the right action
-	  
-    this.emit(':responseReady');
-  },
   
+	"DeleteNotesIntent": function() {
+		this.response.speak("You have chosen to delete a note. " + reask)
+			.listen("Sorry, I did not catch that... Please repeat.");
+		this.emit(':responseReady');
+	},
+	
+	"PlayNotesIntent": function() {
+		this.response.speak("You have chosen to play the notes left to you." + reask)
+			.listen("Sorry, I did not catch that... Please repeat.");
+		this.emit(':responseReady');
+	},
+	
+	'RegisterUserIntent': function() {
+		var currUser = this.event.request.intent.slots.User.value;
+		this.attributes['users'].push(currUser);
+		
+		this.response.speak("I shall now address you as " + currUser + reask)
+		    .listen("Sorry. I didn't hear that please repeat the action you wish to take next.");
+		
+		this.emit(':responseReady');
+	},
+	
+	  
+	  
    // Stop
   'AMAZON.StopIntent': function() {
       this.response.speak('Ok, let\'s play again soon.');
@@ -54,6 +69,5 @@ var handlers = {																					// this is an object that handles the inten
 exports.handler = function(event, context, callback){												//every lambda function needs this, not just Alexa, AWS calls it everytime someone uses our skill
   var alexa = Alexa.handler(event, context);														//setup the Alexa object
     alexa.registerHandlers(handlers);																//register the handlers we wrote in the preceding block
-    //alexa.dynamoDBTableName = 'NotesTable';
     alexa.execute();																				//calls the Alexa code
 };

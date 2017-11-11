@@ -1,11 +1,3 @@
-ActionIntent I wish to {Action}
-ActionIntent I want to {Action}
-ActionIntent Do {Action}
-ActionIntent Do this {Action}
-ActionIntent Can you {Action}
-ActionIntent I need you to {Action}
-
-
 CreateNoteForIntent Leave a message for {User}
 CreateNoteForIntent Leave a note for {User}
 CreateNoteForIntent Leave a memo for {User}
@@ -96,16 +88,6 @@ NoteTakingIntent take note {saucer|note}
 
 
 
-
-
-
-
-
-
-
-
-
-
 RequestNotesIntent Are there any notes for {User}
 RequestNotesIntent Are there any messages for {User}
 RequestNotesIntent Are there any messages for {User}
@@ -114,25 +96,25 @@ RequestNotesIntent Look up messages for {User}
 RequestNotesIntent Look up memos for {User}
 RequestNotesIntent What are my notes
 
-RequesNonspecificNotes Read all my notes
+RequesNonspecificNotes Read all the notes for {User}
 
 RegisterUserIntent I am {User}
-RegisterUserIntent call me {User}
-RegisterUserIntent name me {User}
-RegisterUserIntent address me as {User}
-RegisterUserIntent make my nickname {User}
-RegisterUserIntent my nickname is {User}
-RegisterUserIntent to nickname me {User}
-RegisterUserIntent assign my nickname {User}
+RegisterUserIntent Call me {User}
+RegisterUserIntent Name me {User}
+RegisterUserIntent Address me as {User}
+RegisterUserIntent Make my nickname {User}
+RegisterUserIntent My nickname is {User}
+RegisterUserIntent To nickname me {User}
+RegisterUserIntent Assign my nickname {User}
 RegisterUserIntent set my nickname to {User}
-RegisterUserIntent for my nickname to be {User}
-RegisterUserIntent set {User} as my nickname
+RegisterUserIntent For my nickname to be {User}
+RegisterUserIntent Set {User} as my nickname
 
 
-RequestSpecificNoteIntent Look up {noteNumberIndex}
-RequestSpecificNoteIntent Look up {noteNumberIndex} thorugh {noteNumberIndex}
-RequestSpecificNoteIntent Look up the {noteNumberIndex} note
-RequestSpecificNoteIntent Read {noteNumberIndex}
+RequestSpecificNoteIntent Look up {noteNumberIndex} for {User}
+RequestSpecificNoteIntent Look up {noteNumberIndex} through {noteNumberIndex} for {User}
+RequestSpecificNoteIntent Look up note number {noteNumberIndex} for {User}
+RequestSpecificNoteIntent Read {noteNumberIndex} for {User}
 
 
 DeleteNoteIntent Delete {noteNumberIndex}
