@@ -3,20 +3,26 @@
 
 "use strict";
 
-var Alexa = require("alexa-sdk");																	// this calls the API, Alexa Skills Kit
+var Alexa = require("alexa-sdk");           
+const AWS = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-1'});
 
-var reask = "Now what action do you wish to take next?";
+var reask = "Now what action do you wish to take next?";                                            //macrodefinition
+var reprompt = "Sorry I did not hear that. Please repeat the action you wish to take.";
+
+
+
 
 var handlers = {																					// this is an object that handles the intent requests
     "LaunchRequest": function () {
       
         if(Object.keys(this.attributes).length === 0) {
-            this.attributes['users'] = [];
+            this.attributes['currUser'] = "";
             this.response.speak("Welcome for the first time to home notes... What action do you wish to take?")
-                .listen("Sorry I did not hear that. Please repeat the action you wish to take.");
+                .listen(reprompt);
         } else {
             this.response.speak("Welcome back to home notes ... What action do you wish to take?")
-                .listen("Sorry I did not hear that. Please repeat the action you wish to take.");
+                .listen(reprompt);
         }
 	    
 	    
@@ -25,22 +31,43 @@ var handlers = {																					// this is an object that handles the inten
   
 	"DeleteNotesIntent": function() {
 		this.response.speak("You have chosen to delete a note. " + reask)
-			.listen("Sorry, I did not catch that... Please repeat.");
+			.listen(reprompt);
 		this.emit(':responseReady');
 	},
 	
 	"PlayNotesIntent": function() {
 		this.response.speak("You have chosen to play the notes left to you." + reask)
-			.listen("Sorry, I did not catch that... Please repeat.");
+			.listen(reprompt);
 		this.emit(':responseReady');
 	},
 	
 	'RegisterUserIntent': function() {
 		var currUser = this.event.request.intent.slots.User.value;
-		this.attributes['users'].push(currUser);
+		this.attributes['currUser'] = currUser;
 		
-		this.response.speak("I shall now address you as " + currUser + reask)
-		    .listen("Sorry. I didn't hear that please repeat the action you wish to take next.");
+		
+		
+		    
+		    
+		var params = {
+            Item: {
+                User: currUser,
+                message: "Buy milk"
+            },
+      
+            TableName: 'Notes'
+        };
+    
+            docClient.put(params, function(err, data){
+            if(err){
+                console.log(err,null);
+            }else{
+                console.log(null,data);
+            }
+        });
+        
+        this.response.speak("I shall now address you as " + currUser + ". " + reask);
+        
 		
 		this.emit(':responseReady');
 	},
@@ -66,8 +93,27 @@ var handlers = {																					// this is an object that handles the inten
   }
 };
 
-exports.handler = function(event, context, callback){												//every lambda function needs this, not just Alexa, AWS calls it everytime someone uses our skill
+exports.handler = function(event, context, callback) {												//every lambda function needs this, not just Alexa, AWS calls it everytime someone uses our skill
   var alexa = Alexa.handler(event, context);														//setup the Alexa object
     alexa.registerHandlers(handlers);																//register the handlers we wrote in the preceding block
-    alexa.execute();																				//calls the Alexa code
+    alexa.execute();	//calls the Alexa code
+    
+    var params = {
+        Item: {
+            User: "Alex",
+            message: "Buy milk"
+        },
+      
+        TableName: 'Notes'
+    };
+    
+    docClient.put(params, function(err, data){
+     if(err){
+         callback(err,null);
+     }else{
+         callback(null,data);
+     }
+  });
+    
+    
 };
