@@ -122,3 +122,8 @@ DeleteNoteIntent Delete {noteNumberIndex}
 
 DeleteMultipleNotesIntent Delete this notes: {noteNumberIndex} through {noteNumberIndex}
 
+/* hardcoded events
+Go Throw trash 
+Go buy milk 
+Go buy groceries
+
