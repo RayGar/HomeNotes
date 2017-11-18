@@ -29,6 +29,21 @@ var handlers = {																					// this is an object that handles the inten
 	this.emit(':responseReady');
   },
   
+  
+	"LeaveNoteIntent": function() {
+	    var currNote = this.event.request.intent.slots.Note.value;
+		this.attributes['currNote'] = currNote;
+		
+		var recievingUser = this.event.request.intent.slots.User.value;
+		this.attributes['currUser'] = recievingUser;
+		
+		this.response.speak("I will now leave the message: " + currNote + " to " + recievingUser);
+		
+		//db.write(currNote,currUser);
+		
+		this.emit(':responseReady');
+	},
+  
 	"DeleteNotesIntent": function() {
 		this.response.speak("You have chosen to delete a note. " + reask)
 			.listen(reprompt);
@@ -98,22 +113,6 @@ exports.handler = function(event, context, callback) {												//every lambda
     alexa.registerHandlers(handlers);																//register the handlers we wrote in the preceding block
     alexa.execute();	//calls the Alexa code
     
-    var params = {
-        Item: {
-            User: "Alex",
-            message: "Buy milk"
-        },
-      
-        TableName: 'Notes'
-    };
-    
-    docClient.put(params, function(err, data){
-     if(err){
-         callback(err,null);
-     }else{
-         callback(null,data);
-     }
-  });
     
     
 };
