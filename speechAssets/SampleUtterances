@@ -122,8 +122,67 @@ DeleteNoteIntent Delete {noteNumberIndex}
 
 DeleteMultipleNotesIntent Delete this notes: {noteNumberIndex} through {noteNumberIndex}
 
-/* hardcoded events
-Go Throw trash 
-Go buy milk 
-Go buy groceries
+/* hardcoded events ************************************************
+/* Washing dishes ********************
+NoteTakingIntent {take my noteCan you wash the dishes?|note}
+NoteTakingIntent {Can you put the dishes in the dishwashing machine?|note}
+NoteTakingIntent {Can you dry the dishes?|note}
+/* Feeding pets ********************
+NoteTakingIntent {Can you feed the pets?|note}
+NoteTakingIntent {Can you feed the cat?|note}
+NoteTakingIntent {Can you feed the dog?|note}
+NoteTakingIntent {Can you feed the cats?|note}
+NoteTakingIntent {Can you feed the dogs?|note}
+NoteTakingIntent {Can you feed the cats and dogs?|note}
+/* Bathing pets ********************
+NoteTakingIntent {Can you bathe the dog?|note}
+NoteTakingIntent {Can you bathe the dogs?|note}
+NoteTakingIntent {Can you take the cat to be groomed?|note}
+NoteTakingIntent {Can you take the cats to be groomed?|note}
+/* Doing laundry ********************
+NoteTakingIntent {Can you do the laundry?|note}
+NoteTakingIntent {Can you take your laundry off the washing machine?|note}
+NoteTakingIntent {Can you take your laundry off the dryer?|note} 
+NoteTakingIntent {Can you do our laundry?|note} 
+NoteTakingIntent {Can you do your laundry?|note}
+NoteTakingIntent {Can you do the kids laundry?|note}
+/* Preparing meals ********************
+NoteTakingIntent {Can you cook breakfast?|note}
+NoteTakingIntent {Can you cook lunch?|note}
+NoteTakingIntent {Can you cook dinner?|note} 
+NoteTakingIntent {Can you heat up breakfast?|note}
+NoteTakingIntent {Can you heat up lunch?|note}
+NoteTakingIntent {Can you heat up dinner?|note} 
+/* Picking up the table ********************
+NoteTakingIntent {Can you pick up the table?|note} 
+NoteTakingIntent {Can you put the food in the refrigerator?|note} 
+NoteTakingIntent {Can you put the food in the fridge?|note} 
+NoteTakingIntent {Can you throw the leftovers into the trash?|note} 
+/* Going to the store ********************
+NoteTakingIntent {Can you go to the supermarket?|note}
+NoteTakingIntent {Can you buy the things from the shopping list at the supermarket?|note}
+NoteTakingIntent {Can you buy the things from the shopping list at the grocery store?|note}
+/* Cleaning bathrooms ********************
+NoteTakingIntent {Can you clean your bathroom?|note}
+NoteTakingIntent {Can you clean the bathrooms?|note}
+NoteTakingIntent {Can you clean my bathroom?|note}
+NoteTakingIntent {Can you clean our bathroom?|note} 
+/* Taking care of Garden ********************
+NoteTakingIntent {Can you water the plants?|note} 
+NoteTakingIntent {Can you trim the bushes?|note}
+NoteTakingIntent {Can you cut the lawn?|note} 
+NoteTakingIntent {Can you mow the lawn?|note}
+NoteTakingIntent {Can you remove the weeds from the garden?|note} 
+NoteTakingIntent {Can you put fertilizer on the plants?|note} 
+NoteTakingIntent {Can you water the garden?|note} 
+NoteTakingIntent {Can you prune the trees?|note}
+NoteTakingIntent {Can you prune the shrubs?|note}
+/* Cleaning ********************
+NoteTakingIntent {Can you take out the trash?|note}
+NoteTakingIntent {Can you wash the windows?|note}
+NoteTakingIntent {Can you wash the car?|note}
+NoteTakingIntent {Can you wash your car?|note}
+NoteTakingIntent {Can you clean the refrigerator?|note} 
+NoteTakingIntent {Can you clean the garage?|note} 
+
 
