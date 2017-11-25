@@ -1,0 +1,57 @@
+attributes['length'] = 0
+
+NoteTakingIntent
+	attributes['currentNote'] = getInput(note)
+	attributes['user'] = getInput(user)
+	
+
+	db.write(attributes['user'],attributes['currentNote'],attributes['index'])
+	
+	attributes['index'] = attributes['length'] + 1
+	attributes['length']++
+	
+	output("note number" + attributes['index'] + "will be for" + attributes['user'] + "and it says" + attributes['currentNote'])
+	
+NoteReadingIntent
+	attributes['index'] = getInput(index)
+	attributes['user'] = getInput(user)
+	
+	
+	currentNote = db.query(attributes['user'],attributes['index'])
+
+	
+	output("note number" + attributes['index'] + "reads" + currentNote)
+	
+	
+ReadAllNotes
+	attributes['user'] = getInput(user)
+	
+	for(i=0;i<=attributes['length'];i++{
+		currentNote = db.query(attributes['user'],i)
+		output("note number" + i + "reads" + currentNote)
+	}
+	
+	
+NoteDeletingIntent
+	attributes['index'] = getInput(index)
+	attributes['user'] = getInput(user)
+	
+	db.delete(attributes['user'],attributes['index'])
+
+	attributes['length']--
+	
+	output("note number" + attributes['index'] + "has been deleted)	
+	
+DeleteAllNotes
+	attributes['user'] = getInput(user)
+	
+	for(i=0;i<=attributes['length'];i++{
+		currentNote = db.delete(attributes['user'],i)
+		output("note number" + i + "reads" + currentNote)
+	}	
+	
+	attributes['length'] = 0
+	
+	
+	
+	

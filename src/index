@@ -7,8 +7,8 @@ var Alexa = require("alexa-sdk");
 const AWS = require('aws-sdk');
 const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-1'});
 
-var reask = "Now what action do you wish to take next?";                                            //macrodefinition
-var reprompt = "Sorry I did not hear that. Please repeat the action you wish to take.";
+var actionPrompt = " Now what action do you wish to take next?";                                            //macrodefinition
+var actionRepeat = "Sorry I did not hear that. Please repeat the action you wish to take.";
 
 
 
@@ -18,47 +18,98 @@ var handlers = {																					// this is an object that handles the inten
       
         if(Object.keys(this.attributes).length === 0) {
             this.attributes['currUser'] = "";
-            this.response.speak("Welcome for the first time to home notes... What action do you wish to take?")
-                .listen(reprompt);
+            this.attributes['currNote'] = "";
+            this.attributes['notes'] = [];
+            this.attributes['correspondingUserNotes'] = [];          //for knowing who each note is for
+            this.response.speak("Welcome to home notes... What action do you wish to take?")
+                .listen(actionPrompt);
         } else {
             this.response.speak("Welcome back to home notes ... What action do you wish to take?")
-                .listen(reprompt);
+                .listen(actionRepeat);
         }
 	    
 	    
-	this.emit(':responseReady');
-  },
+	    this.emit(':responseReady');
+     },
+     
+    "LeaveNoteIntent": function() {
+	    var currNote = this.event.request.intent.slots.Note.value;
+		this.attributes['currNote'] = currNote;
+		
+		var recievingUser = this.event.request.intent.slots.User.value;
+		this.attributes['currUser'] = recievingUser;
+		
+		if(currNote) {
+		    this.attributes['notes'].push(currNote);
+		    this.attributes['correspondingUserNotes'].push(recievingUser);
+		    let index = this.attributes['notes'].length.toString();
+		    
+		    this.response.speak("I will now leave the message: " +
+		        this.attributes['notes'][this.attributes['notes'].length-1] + " to " + 
+		        this.attributes['correspondingUserNotes'][this.attributes['correspondingUserNotes'].length-1]
+		        + actionPrompt)
+		            .listen(actionRepeat);
+		}
+		
+		
+		
+		
+		
+		this.emit(':responseReady');
+	},
   
 	"DeleteNotesIntent": function() {
-		this.response.speak("You have chosen to delete a note. " + reask)
-			.listen(reprompt);
+		this.response.speak("You have chosen to delete a note. " + actionPrompt)
+			.listen(actionRepeat);
 		this.emit(':responseReady');
 	},
 	
 	"PlayNotesIntent": function() {
-		this.response.speak("You have chosen to play the notes left to you." + reask)
-			.listen(reprompt);
+		var receivingUser = this.event.request.intent.slots.User.value;
+	    var i;
+	    var output = "";
+		
+		for(i = 0; i < this.attributes['notes'].length; i++) {
+		    if(receivingUser == this.attributes['correspondingUserNotes'][i]){
+		        output += "Note number: " + i + ", reads " +  
+		            this.attributes['notes'][i] + " ... ";
+		    }
+		}
+		
+		this.response.speak(output);
+		
+		
 		this.emit(':responseReady');
+	},
+	
+	"PlayEveryNoteIntent": function() {
+	    var i;
+	    
+	    for(i=0;i<this.attributes['notes'].length;i++) {
+	        this.response.speak("Note number: " + i + ", reads " +
+	            this.attributes['notes'][i] + " ... " + 
+		        "And it is for ... " + 
+		        this.attributes['correspondingUserNotes'][i]);
+	    }
+	    
+	    this.emit(':responseReady');
 	},
 	
 	'RegisterUserIntent': function() {
 		var currUser = this.event.request.intent.slots.User.value;
 		this.attributes['currUser'] = currUser;
-		
-		
-		
-		    
 		    
 		var params = {
             Item: {
                 User: currUser,
-                message: "Buy milk"
+                message: "Do the laundry"
             },
       
             TableName: 'Notes'
         };
     
             docClient.put(params, function(err, data){
+            this.response.speak("Attempting to write to the database");
             if(err){
                 console.log(err,null);
             }else{
@@ -66,12 +117,12 @@ var handlers = {																					// this is an object that handles the inten
             }
         });
         
-        this.response.speak("I shall now address you as " + currUser + ". " + reask);
+        this.response.speak("I shall now address you as " + currUser + ". " + actionPrompt)
+            .listen(actionPrompt);
         
 		
 		this.emit(':responseReady');
 	},
-	
 	  
 	  
    // Stop
@@ -89,31 +140,16 @@ var handlers = {																					// this is an object that handles the inten
   // Save state
   'SessionEndedRequest': function() {
     console.log('session ended!');
+    //TODO" this line causes skill to crash
     this.emit(':saveState', true);
   }
+  
 };
 
 exports.handler = function(event, context, callback) {												//every lambda function needs this, not just Alexa, AWS calls it everytime someone uses our skill
   var alexa = Alexa.handler(event, context);														//setup the Alexa object
     alexa.registerHandlers(handlers);																//register the handlers we wrote in the preceding block
     alexa.execute();	//calls the Alexa code
-    
-    var params = {
-        Item: {
-            User: "Alex",
-            message: "Buy milk"
-        },
-      
-        TableName: 'Notes'
-    };
-    
-    docClient.put(params, function(err, data){
-     if(err){
-         callback(err,null);
-     }else{
-         callback(null,data);
-     }
-  });
     
     
 };

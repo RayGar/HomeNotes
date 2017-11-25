@@ -122,3 +122,67 @@ DeleteNoteIntent Delete {noteNumberIndex}
 
 DeleteMultipleNotesIntent Delete this notes: {noteNumberIndex} through {noteNumberIndex}
 
+/* hardcoded events ************************************************
+/* Washing dishes ********************
+NoteTakingIntent take my note {take my noteCan you wash the dishes?|note}
+NoteTakingIntent take my note {Can you put the dishes in the dishwashing machine?|note}
+NoteTakingIntent take my note {Can you dry the dishes?|note}
+/* Feeding pets ********************
+NoteTakingIntent take my note {Can you feed the pets?|note}
+NoteTakingIntent take my note {Can you feed the cat?|note}
+NoteTakingIntent take my note {Can you feed the dog?|note}
+NoteTakingIntent take my note {Can you feed the cats?|note}
+NoteTakingIntent take my note {Can you feed the dogs?|note}
+NoteTakingIntent take my note {Can you feed the cats and dogs?|note}
+/* Bathing pets ********************
+NoteTakingIntent take my note {Can you bathe the dog?|note}
+NoteTakingIntent take my note {Can you bathe the dogs?|note}
+NoteTakingIntent take my note {Can you take the cat to be groomed?|note}
+NoteTakingIntent take my note {Can you take the cats to be groomed?|note}
+/* Doing laundry ********************
+NoteTakingIntent take my note {Can you do the laundry?|note}
+NoteTakingIntent take my note {Can you take your laundry off the washing machine?|note}
+NoteTakingIntent take my note {Can you take your laundry off the dryer?|note} 
+NoteTakingIntent take my note {Can you do our laundry?|note} 
+NoteTakingIntent take my note {Can you do your laundry?|note}
+NoteTakingIntent take my note {Can you do the kids laundry?|note}
+/* Preparing meals ********************
+NoteTakingIntent take my note {Can you cook breakfast?|note}
+NoteTakingIntent take my note {Can you cook lunch?|note}
+NoteTakingIntent take my note {Can you cook dinner?|note} 
+NoteTakingIntent take my note {Can you heat up breakfast?|note}
+NoteTakingIntent take my note {Can you heat up lunch?|note}
+NoteTakingIntent take my note {Can you heat up dinner?|note} 
+/* Picking up the table ********************
+NoteTakingIntent take my note {Can you pick up the table?|note} 
+NoteTakingIntent take my note {Can you put the food in the refrigerator?|note} 
+NoteTakingIntent take my note {Can you put the food in the fridge?|note} 
+NoteTakingIntent take my note {Can you throw the leftovers into the trash?|note} 
+/* Going to the store ********************
+NoteTakingIntent take my note {Can you go to the supermarket?|note}
+NoteTakingIntent take my note {Can you buy the things from the shopping list at the supermarket?|note}
+NoteTakingIntent take my note {Can you buy the things from the shopping list at the grocery store?|note}
+/* Cleaning bathrooms ********************
+NoteTakingIntent take my note {Can you clean your bathroom?|note}
+NoteTakingIntent take my note {Can you clean the bathrooms?|note}
+NoteTakingIntent take my note {Can you clean my bathroom?|note}
+NoteTakingIntent take my note {Can you clean our bathroom?|note} 
+/* Taking care of Garden ********************
+NoteTakingIntent take my note {Can you water the plants?|note} 
+NoteTakingIntent take my note {Can you trim the bushes?|note}
+NoteTakingIntent take my note {Can you cut the lawn?|note} 
+NoteTakingIntent take my note {Can you mow the lawn?|note}
+NoteTakingIntent take my note {Can you remove the weeds from the garden?|note} 
+NoteTakingIntent take my note {Can you put fertilizer on the plants?|note} 
+NoteTakingIntent take my note {Can you water the garden?|note} 
+NoteTakingIntent take my note {Can you prune the trees?|note}
+NoteTakingIntent take my note {Can you prune the shrubs?|note}
+/* Cleaning ********************
+NoteTakingIntent take my note {Can you take out the trash?|note}
+NoteTakingIntent take my note {Can you wash the windows?|note}
+NoteTakingIntent take my note {Can you wash the car?|note}
+NoteTakingIntent take my note {Can you wash your car?|note}
+NoteTakingIntent take my note {Can you clean the refrigerator?|note} 
+NoteTakingIntent take my note {Can you clean the garage?|note} 
+
+
