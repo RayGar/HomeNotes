@@ -1,125 +1,894 @@
 {
-  "intents": [
-    {
-      "name": "ActionIntent",
-      "samples": [
-        "I wish to {action}",
-        "I want to {action}",
-        "Do {action}",
-        "Do this {action}",
-        "Can you {action}",
-        "Could you {action}",
-        "I need you to {action}"
-      ],
-      "slots": [
-        {
-          "name": "action",
-          "type": "ActionType",
-          "samples": []
-        }
-      ]
-    },
-    {
-      "name": "AMAZON.CancelIntent",
-      "samples": []
-    },
-    {
-      "name": "AMAZON.HelpIntent",
-      "samples": []
-    },
-    {
-      "name": "AMAZON.StopIntent",
-      "samples": []
-    }
-  ],
-  "types": [
-    {
-      "name": "ActionType",
-      "values": [
-        {
-          "id": null,
-          "name": {
-            "value": "take note",
-            "synonyms": [
-              "record memo",
-              "record note",
-              "leave memo",
-              "leave message",
-              "leave note"
+  "languageModel": {
+    "types": [
+      {
+        "name": "NoteType",
+        "values": [
+          {
+            "id": null,
+            "name": {
+              "value": "either of the keys can be used to encrypt a message the opposite key from the one used to encrypt the message is used for decryption|note",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "the opposite key from the one used to encrypt the message is used for decryption either of the keys can be used to encrypt a message",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "asymmetric cryptography also known as public key cryptography uses public and private keys to encrypt and decrypt data",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "public key cryptography also known as asymmetric cryptography uses public and private keys to encrypt and decrypt data",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "the keys are simply large numbers that have been paired together but are not identical",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "the keys are not identical but are simply large numbers that have been paired together",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "one key in the pair can be shared with everyone it is called the public key",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "asymmetric cryptography uses public and private keys to encrypt and decrypt data",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "the other key in the pair is kept secret it is called the private key",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "the private key it is called the other key in the pair is kept secret",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "the private key it is called in the pair is kept secret",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "the other key in the pair is kept secret",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "dinner with Linda at six tomorrow at Hao",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "lunch with John at twelve at Maru",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "the godfather is the best movie ever",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "mirror mirror on the wall",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "flexible sensors for wearables",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "interactive orange juice",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "mirror mirror wall",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "mirror mirror",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "interactive juice",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "pcb printer",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "interactive",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "mirror",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "whatever",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "take out the trash",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "buy milk",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "buy bitcoin",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "pick up the kids from school",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "take out the garbage",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "pick up the kids from soccer",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "pick up grandma from the airport",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "I have a meeting today",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "I have a meeting on the afternoon",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "I'm gone and won't be back until tomorrow",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "bathe the dog",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "buy dogfood",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "buy dog food",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "go to your doctor's appointment",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "wash clothes, dishes, and towels",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "thoroughly clean the bathroom",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "clean the garage",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "sweep the garage",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "wipe the kitchen cabinets and appliances",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "sign the package for when the UPS guy comes in",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "wash clothes",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "fold laundry",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "wash the dishes",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "put the dishes in the dishwashing machine",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "feed the pets",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "feed the pet",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "bathe the dogs",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "take the cat to be groomed",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "take your laundry off the washing machine",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "cook breakfast for the kids",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "cook dinner for the kids",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "cook lunch for the kids",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "pack the kids' lunch",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "pick up the table",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "put the leftovers in the fridge",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "throw away the leftovers",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "clean the bathroom",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "trim the bushes",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "remove the weeds from the garden",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "put fertilizer on the plants",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "check the mail",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "wash the car",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "clean the fridge",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "water the garden",
+              "synonyms": []
+            }
+          }
+        ]
+      },
+      {
+        "name": "UserType",
+        "values": [
+          {
+            "id": null,
+            "name": {
+              "value": "Roger",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Luciano",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Anish",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Sulav",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Topa",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "David",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Zach",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Sunho",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Chris",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Andre",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "James",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Fox",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Josh",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Lim",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "ray",
+              "synonyms": []
+            }
+          }
+        ]
+      }
+    ],
+    "intents": [
+      {
+        "name": "AMAZON.CancelIntent",
+        "samples": [
+          "Close",
+          "Close this skill",
+          "Cancel",
+          "Cancel this skill",
+          "Cancel home notes"
+        ]
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": [
+          "Help me out",
+          "Help",
+          "I need help",
+          "Please provide support"
+        ]
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": [
+          "Stop",
+          "Stop this skill"
+        ]
+      },
+      {
+        "name": "DeleteAllNotesIntent",
+        "samples": [
+          "Delete all the notes.",
+          "Erase all the note",
+          "Oops all the notes"
+        ],
+        "slots": []
+      },
+      {
+        "name": "DeleteNoteIntent",
+        "samples": [
+          "Delete note number {index}",
+          "Delete note {index}",
+          "Remove note {index}"
+        ],
+        "slots": [
+          {
+            "name": "index",
+            "type": "AMAZON.NUMBER",
+            "samples": [
+              "It is {index}"
             ]
           }
-        },
-        {
-          "id": null,
-          "name": {
-            "value": "delete note",
-            "synonyms": [
-              "erase message",
-              "erase note",
-              "erase memo",
-              "delete memo",
-              "delete note"
+        ]
+      },
+      {
+        "name": "LeaveNoteIntent",
+        "samples": [
+          "For {User} leave this note {Note}",
+          "Leave this note {Note} for {User}",
+          "Tell {User} that I want him to {Note}"
+        ],
+        "slots": [
+          {
+            "name": "User",
+            "type": "AMAZON.US_FIRST_NAME",
+            "samples": [
+              "It is for {User}",
+              "It's for {User}",
+              "My good friend {User}",
+              "My buddy {User}"
+            ]
+          },
+          {
+            "name": "Note",
+            "type": "NoteType",
+            "samples": [
+              "It's {Note}"
             ]
           }
-        },
-        {
-          "id": null,
-          "name": {
-            "value": "search",
-            "synonyms": [
-              "request",
-              "look up"
+        ]
+      },
+      {
+        "name": "PlayEveryNoteIntent",
+        "samples": [
+          "Play all the notes",
+          "Play every note",
+          "Play all the messages",
+          "Play every message",
+          "Play all the notes for all users",
+          "Play all the messages for all the users"
+        ],
+        "slots": []
+      },
+      {
+        "name": "PlayNotesIntent",
+        "samples": [
+          "Play every note for {User}",
+          "Play all my notes for {User}",
+          "Play all the notes for {User}"
+        ],
+        "slots": [
+          {
+            "name": "User",
+            "type": "AMAZON.US_FIRST_NAME"
+          }
+        ]
+      },
+      {
+        "name": "RegisterUserIntent",
+        "samples": [
+          "I am {User}",
+          "Call me {User}",
+          "Address me as {User}",
+          "Refer me to as {User}",
+          "Register me as {User}"
+        ],
+        "slots": [
+          {
+            "name": "User",
+            "type": "AMAZON.US_FIRST_NAME",
+            "samples": [
+              "I am {User}",
+              "Call me {User}",
+              "My name is {User}",
+              "register me as {User}"
             ]
           }
-        }
-      ]
-    }
-  ],
+        ]
+      },
+      {
+        "name": "SessionEndedRequest",
+        "samples": [
+          "Save the session"
+        ],
+        "slots": []
+      }
+    ],
+    "invocationName": "home notes"
+  },
   "prompts": [
     {
-      "id": "Confirm.Intent-ActionIntent",
-      "promptVersion": "1.0",
-      "definitionVersion": "1.0",
+      "id": "Confirm.Intent-DeleteAllNotesIntent",
       "variations": [
         {
           "type": "PlainText",
-          "value": "Is it {action}"
-        },
-        {
-          "type": "PlainText",
-          "value": "Did you say the action is {action}"
+          "value": "All your notes will be deleted"
         }
       ]
     },
     {
-      "id": "Elicit.Intent-ActionIntent.IntentSlot-action",
-      "promptVersion": "1.0",
-      "definitionVersion": "1.0",
+      "id": "Elicit.Intent-DeleteNoteIntent.IntentSlot-index",
       "variations": [
         {
           "type": "PlainText",
-          "value": "What is the action {action}"
+          "value": "What is the number?"
+        }
+      ]
+    },
+    {
+      "id": "Elicit.Intent-LeaveNoteIntent.IntentSlot-User",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "Who is the note for?"
+        }
+      ]
+    },
+    {
+      "id": "Elicit.Intent-LeaveNoteIntent.IntentSlot-Note",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "What is the note"
+        },
+        {
+          "type": "PlainText",
+          "value": "What is the note?"
+        }
+      ]
+    },
+    {
+      "id": "Elicit.Intent-PlayNotesIntent.IntentSlot-User",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "Who am I playing all the notes for?"
+        }
+      ]
+    },
+    {
+      "id": "Elicit.Intent-RegisterUserIntent.IntentSlot-User",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "What is the name of the user you wish to register?"
+        },
+        {
+          "type": "PlainText",
+          "value": "Who am I speaking to?"
+        },
+        {
+          "type": "PlainText",
+          "value": "What may I address you as?"
+        },
+        {
+          "type": "PlainText",
+          "value": "What may I call you?"
         }
       ]
     }
   ],
   "dialog": {
-    "version": "1.0",
     "intents": [
       {
-        "name": "ActionIntent",
+        "name": "DeleteAllNotesIntent",
         "confirmationRequired": true,
         "prompts": {
-          "confirm": "Confirm.Intent-ActionIntent"
+          "confirmation": "Confirm.Intent-DeleteAllNotesIntent"
         },
+        "slots": []
+      },
+      {
+        "name": "DeleteNoteIntent",
+        "confirmationRequired": false,
+        "prompts": {},
         "slots": [
           {
-            "name": "action",
-            "type": "ActionType",
+            "name": "index",
+            "type": "AMAZON.NUMBER",
             "elicitationRequired": true,
             "confirmationRequired": false,
             "prompts": {
-              "elicit": "Elicit.Intent-ActionIntent.IntentSlot-action"
+              "elicitation": "Elicit.Intent-DeleteNoteIntent.IntentSlot-index"
+            }
+          }
+        ]
+      },
+      {
+        "name": "LeaveNoteIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "User",
+            "type": "AMAZON.US_FIRST_NAME",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicitation": "Elicit.Intent-LeaveNoteIntent.IntentSlot-User"
+            }
+          },
+          {
+            "name": "Note",
+            "type": "NoteType",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicitation": "Elicit.Intent-LeaveNoteIntent.IntentSlot-Note"
+            }
+          }
+        ]
+      },
+      {
+        "name": "PlayNotesIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "User",
+            "type": "AMAZON.US_FIRST_NAME",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicitation": "Elicit.Intent-PlayNotesIntent.IntentSlot-User"
+            }
+          }
+        ]
+      },
+      {
+        "name": "RegisterUserIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "User",
+            "type": "AMAZON.US_FIRST_NAME",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicitation": "Elicit.Intent-RegisterUserIntent.IntentSlot-User"
             }
           }
         ]
