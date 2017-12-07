@@ -4,7 +4,7 @@
 "use strict";
 
 var Alexa = require("alexa-sdk");           
-//const AWS = require('aws-sdk');
+const AWS = require('aws-sdk');
 //const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-1'});
 
 var actionPrompt = " Now what action do you wish to take next?";                                            
@@ -19,16 +19,11 @@ var handlers = {																										// this is an object that handles the 
     "LaunchRequest": function () {
 		
 		
-        if(Object.keys(this.attributes).length === 0) {
-
-        	//is it the first time a user has initiated the skill
-            this.attributes.NoteList = {
-                'currUser': 'N/A',
-                'currNote': 'N/A',
-                'notes': [],
-                'correspondingUserNotes': []
-            }
-										//for knowing who each note is for
+        if(Object.keys(this.attributes).length === 0) {																	//is it the first time a user has initiated the skill
+            this.attributes['currUser'] = "";																			//for not having to ask who a note is for if we already know
+            this.attributes['currNote'] = "";
+            this.attributes['notes'] = [];
+            this.attributes['correspondingUserNotes'] = [];          													//for knowing who each note is for
             this.response.speak("Welcome to home notes... What action do you wish to take?")
                 .listen(actionPrompt);
         } else {
@@ -43,19 +38,19 @@ var handlers = {																										// this is an object that handles the 
 	//LeaveNoteIntent leaves precisely one note that is designated for precisely one user
     "LeaveNoteIntent": function() {
 	    var currNote = this.event.request.intent.slots.Note.value;
-		this.attributes.NoteList.currNote = currNote;
+		this.attributes['currNote'] = currNote;
 		
 		var recievingUser = this.event.request.intent.slots.User.value;
-		this.attributes.NoteList.currUser = recievingUser;
+		this.attributes['currUser'] = recievingUser;
 		
 		if(currNote && recievingUser) {																					//if both not NULL
-		    this.attributes.NoteList.notes.push(currNote);
-		    this.attributes.NoteList.correspondingUserNotes.push(recievingUser);
-		    //var index = this.attributes.NoteList.notes.length.toString();														//length of the notes array
+		    this.attributes['notes'].push(currNote);
+		    this.attributes['correspondingUserNotes'].push(recievingUser);
+		    let index = this.attributes['notes'].length.toString();														//length of the notes array
 		    
 		    this.response.speak("I will now leave the message: " +
-		        this.attributes.NoteList.notes[this.attributes.NoteList.notes.length-1] + " to " + 									//output confirmation of the new note
-		        this.attributes.NoteList.correspondingUserNotes[this.attributes.NoteList.correspondingUserNotes.length-1]			//output cofirmation of who the note is for
+		        this.attributes['notes'][this.attributes['notes'].length-1] + " to " + 									//output confirmation of the new note
+		        this.attributes['correspondingUserNotes'][this.attributes['correspondingUserNotes'].length-1]			//output cofirmation of who the note is for
 		        + actionPrompt)
 		            .listen(actionRepeat);
 		}
@@ -71,9 +66,9 @@ var handlers = {																										// this is an object that handles the 
 	"DeleteNoteIntent": function() {
 		var i = this.event.request.intent.slots.index.value;
 		
-		if(currUser && i) {
-			this.attributes.NoteList.notes.pop(i);
-			this.attributes.NoteList.correspondingUserNotes.pop(i);
+		if(i) {
+			this.attributes['notes'].pop(i);
+			this.attributes['correspondingUser'].pop(i);
 			
 			this.response.speak("Note number: " + i + " has been deleted. Play all the notes to find what the new ordering is.");
 		} else {
@@ -93,10 +88,10 @@ var handlers = {																										// this is an object that handles the 
 	    var i;
 	    var output = "";
 		
-		for(i = 0; i < this.attributes.NoteList.notes.length; i++) {									//for each member of the notes array ...
-		    if(receivingUser == this.attributes.NoteList.correspondingUserNotes[i]){					//if the user inputed user name is equal to the name on the correspondingUser array...
+		for(i = 0; i < this.attributes['notes'].length; i++) {									//for each member of the notes array ...
+		    if(receivingUser == this.attributes['correspondingUserNotes'][i]){					//if the user inputed user name is equal to the name on the correspondingUser array...
 		        output += "Note number: " + i + ", reads " +  									//append the member of the notes array to the output string
-		            this.attributes.NoteList.notes[i] + " ... ";
+		            this.attributes['notes'][i] + " ... ";
 		    }
 		}
 		
@@ -110,11 +105,11 @@ var handlers = {																										// this is an object that handles the 
 	"PlayEveryNoteIntent": function() {
 	    var i;
 	    
-	    for(i=0;i<this.attributes.NoteList.notes.length;i++) {
+	    for(i=0;i<this.attributes['notes'].length;i++) {
 	        this.response.speak("Note number: " + i + ", reads " +
-	            this.attributes.NoteList.notes[i] + " ... " +
+	            this.attributes['notes'][i] + " ... " + 
 		        "And it is for ... " + 
-		        this.attributes.NoteList.correspondingUserNotes[i]);
+		        this.attributes['correspondingUserNotes'][i]);
 	    }
 	    
 	    this.emit(':responseReady');
@@ -123,7 +118,7 @@ var handlers = {																										// this is an object that handles the 
 	//RegisterUserIntent serves two purposes: adds a new user to the user array and sets him/her as the currentUser for other intents to know
 	'RegisterUserIntent': function() {
 		var currUser = this.event.request.intent.slots.User.value;
-		this.attributes.NoteList.currUser = currUser;
+		this.attributes['currUser'] = currUser;
 		    
         
         if(currUser) {
@@ -162,9 +157,7 @@ var handlers = {																										// this is an object that handles the 
 };
 
 exports.handler = function(event, context, callback) {												//every lambda function needs this, not just Alexa, AWS calls it everytime someone uses our skill
-  var alexa = Alexa.handler(event, context);
-  //setup the Alexa object
-    alexa.dynamoDBTableName = 'HomeNotesTable';
+  var alexa = Alexa.handler(event, context);														//setup the Alexa object
     alexa.registerHandlers(handlers);																//register the handlers we wrote in the preceding block
     alexa.execute();	//calls the Alexa code
     
